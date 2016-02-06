@@ -1,15 +1,64 @@
+//编程题＃2：角谷猜想
+//来源: POJ (Coursera声明：在POJ上完成的习题将不会计入Coursera的最后成绩。)
+//注意： 总时间限制: 1000ms 内存限制: 65536kB
+//描述
+//所谓角谷猜想，是指对于任意一个正整数，如果是奇数，则乘3加1，如果是偶数，则除以2，得到的结果再按照上述规则重复处理，最终总能够得到1。如，假定初始整数为5，计算过程分别为16、8、4、2、1。
+//程序要求输入一个整数，将经过处理得到1的过程输出来。
+//输入
+//一个正整数
+//输出
+//从输入整数到1的步骤，每一步为一行，每一部中描述计算过程，假定输入为7，则输出为：
+//7*3+1=22
+//22/2=11
+//11*3+1=34
+//34/2=17
+//17*3+1=52
+//52/2=26
+//26/2=13
+//13*3+1=40
+//40/2=20
+//20/2=10
+//10/2=5
+//5*3+1=16
+//16/2=8
+//8/2=4
+//4/2=2
+//2/2=1
 //
-//  main.cpp
-//  2_JiaoguGuess
+//最后一行输出"End"，如果输入为1，直接输出"End"
+//样例输入
 //
-//  Created by wgz on 16/2/6.
-//  Copyright © 2016年 wgz. All rights reserved.
+//5
 //
+//样例输出
+//
+//5*3+1=16
+//16/2=8
+//8/2=4
+//4/2=2
+//2/2=1
+//End
 
 #include <iostream>
+using namespace std;
+void guess(int);
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+    int x;
+    cin>>x;
+    guess(x);
+}
+
+void guess(int x){
+    if (x==1) {
+        cout<<"END"<<endl;
+    }else if ((x%2)==0) {
+        int newX=x/2;
+        cout<<x<<"/2="<<newX<<endl;
+        guess(newX);
+    }else{
+        int newX=x*3+1;
+         cout<<x<<"*3+1="<<newX<<endl;
+        guess(newX);
+    }
 }
