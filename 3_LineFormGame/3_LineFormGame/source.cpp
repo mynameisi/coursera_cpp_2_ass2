@@ -25,6 +25,22 @@
 #include <iostream>
 using namespace std;
 
+char line[101]={'\0'};
+int getGirl(int);
+
 int main(int argc, const char * argv[]) {
+    //注意：cin.getline(str,100)最多只能输入99个字符！
+    cin.getline(line, 101);
+    getGirl(0);
     return 0;
+}
+int getGirl(int i){
+    int j=0;
+    if (line[i]==line[0]) {
+        j=getGirl(i+1);
+        cout<<i<<" "<<j<<endl;
+        return getGirl(j+1);
+    }else{
+        return i;
+    }
 }
