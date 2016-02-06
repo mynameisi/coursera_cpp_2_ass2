@@ -18,7 +18,28 @@
 
 #include <iostream>
 using namespace std;
+void print(char *, int *);
 
 int main(int argc, const char * argv[]) {
+    char str[500]={'\0'};
+    cin.getline(str, 500);
+    for (int i=0; str[i]!='\0'; i++) {
+        if (str[i]==' ') {
+            cout<<str[i];
+        }else{
+            print(str, &i);
+        }
+    }
+    cout<<endl;
     return 0;
 }
+
+void print(char str[], int *index){
+    int temp=*index;
+    if (str[*index+1]!=' ' && str[*index+1]!='\0') {
+        print(str, &((*index)+=1));
+    }
+    cout<<str[temp];
+}
+
+
